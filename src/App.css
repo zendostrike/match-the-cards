@@ -8,8 +8,8 @@
 #gameScreen {
     background: #361F77;
     color: #fff;
-    -webkit-box-shadow: inset 15px 15px 0px 15px rgba(14,0,63,1);
-    -moz-box-shadow: inset 15px 15px 0px 15px rgba(14,0,63,1);
-    box-shadow: inset 15px 15px 0px 15px rgba(14,0,63,1);
-    padding: 55px 75px 25px 75px;
+    -webkit-box-shadow: inset 12px 12px 0px 12px rgba(14,0,63,1);
+    -moz-box-shadow: inset 12px 12px 0px 12px rgba(14,0,63,1);
+    box-shadow: inset 12px 12px 0px 12px rgba(14,0,63,1);
+    padding: 55px 75px 35px 75px;
 }
