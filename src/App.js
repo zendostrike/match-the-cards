@@ -19,7 +19,11 @@ export default class App extends React.Component {
         return false
       }
 
-      this.matchCards(card, index)
+      const flippedCards = this.flipCards(cards, [index])
+
+      this.setState({ cards: flippedCards })
+
+      // this.matchCards(card, index)
     } else {
       console.log(cards[index])
       cards[index].frontFace = true
@@ -65,14 +69,19 @@ export default class App extends React.Component {
   }
 
   resetTurn = () => {
-    console.log('turn reset')
+    console.log('turn reseted')
     this.setState({
       selectedCard: null
     })
   }
 
-  flip = cards => {
-    cards.forEach(element => {})
+  flipCards = (cards, cardIndexs) => {
+    for (let index = 0; index < cardIndexs.length; index++) {
+      cards[cardIndexs[index]].frontFace = !cards[cardIndexs[index]].frontFace
+    }
+    console.log(cards)
+
+    return cards
   }
 
   render () {
