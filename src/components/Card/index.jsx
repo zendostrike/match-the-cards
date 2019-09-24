@@ -5,7 +5,7 @@ const Card = ({ item, index, onClick }) => {
   return (
     <div className='scene scene--card'>
       <div
-        className={`card ${item.frontFace ? 'is-flipped' : ''}`}
+        className={`card ${item.revealed ? 'is-flipped' : ''}`}
         onClick={() => {
           if (!item.solved) {
             onClick(item, index)

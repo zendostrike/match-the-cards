@@ -1,13 +1,13 @@
 class Card {
-  constructor (frontFace, type, bgImage) {
-    this.frontFace = frontFace
+  constructor (revealed, type, bgImage) {
+    this.revealed = revealed
     this.type = type
     this.bgImage = bgImage
     this.solved = false
   }
 
-  setFrontFace (value) {
-    this.frontFace = value
+  setRevealed (value) {
+    this.revealed = value
   }
 
   isSameType (card) {

@@ -28,7 +28,7 @@ export default class App extends React.Component {
       }, 1000)
     } else {
       console.log(cards[index])
-      cards[index].frontFace = true
+      cards[index].revealed = true
 
       this.setState({
         selectedCard: card,
@@ -61,7 +61,7 @@ export default class App extends React.Component {
       console.log('dont match!')
       const cards = this.state.cards.map((element, index) => {
         if (index === selectedIndex || index === i) {
-          element.frontFace = false
+          element.revealed = false
         }
         return element
       })
@@ -75,7 +75,6 @@ export default class App extends React.Component {
   }
 
   resetTurn = () => {
-    console.log('turn reseted')
     this.setState({
       selectedCard: null,
       selectedIndex: null
@@ -84,7 +83,7 @@ export default class App extends React.Component {
 
   flipCards = (cards, cardIndexs) => {
     for (let index = 0; index < cardIndexs.length; index++) {
-      cards[cardIndexs[index]].frontFace = !cards[cardIndexs[index]].frontFace
+      cards[cardIndexs[index]].revealed = !cards[cardIndexs[index]].revealed
     }
     console.log(cards)
 
