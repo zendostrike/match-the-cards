@@ -1,15 +1,14 @@
 #gameContainer {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #gameScreen {
-    background: #361F77;
-    color: #fff;
-    -webkit-box-shadow: inset 12px 12px 0px 12px rgba(14,0,63,1);
-    -moz-box-shadow: inset 12px 12px 0px 12px rgba(14,0,63,1);
-    box-shadow: inset 12px 12px 0px 12px rgba(14,0,63,1);
-    padding: 55px 75px 35px 75px;
+  background: #361f77;
+  color: #fff;
+  -webkit-box-shadow: inset 12px 12px 0px 12px rgba(14, 0, 63, 1);
+  -moz-box-shadow: inset 12px 12px 0px 12px rgba(14, 0, 63, 1);
+  box-shadow: inset 12px 12px 0px 12px rgba(14, 0, 63, 1);
+  padding: 55px 75px 35px 75px;
 }

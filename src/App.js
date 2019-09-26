@@ -1,8 +1,9 @@
 import React from 'react'
 
-import './App.css'
-import { Card, Grid } from './components'
+import { Card, Board } from './components'
 import generateBoard from './BoardGenerator'
+import './App.css'
+
 
 export default class App extends React.Component {
   state = {
@@ -11,28 +12,30 @@ export default class App extends React.Component {
     cards: generateBoard()
   }
 
-  handleSelectedCard = (card, index) => {
+  handleSelectedCard = (clickedCard, clickedIndex) => {
     const { selectedCard, selectedIndex, cards } = this.state
 
     if (selectedCard) {
-      if (selectedIndex === index) {
+      // Avoid click on current card
+      if (selectedIndex === clickedIndex) {
         return false
       }
 
-      const flippedCards = this.flipCards(cards, [index])
+      // Flip second card
+      const flippedCards = this.flipCards(cards, [clickedIndex])
 
       this.setState({ cards: flippedCards })
 
+      // Match cards a second later to let user see the card
       setTimeout(() => {
-        this.matchCards(card, index)
+        this.matchCards(clickedCard, clickedIndex)
       }, 1000)
     } else {
-      console.log(cards[index])
-      cards[index].revealed = true
+      cards[clickedIndex].revealed = true
 
       this.setState({
-        selectedCard: card,
-        selectedIndex: index,
+        selectedCard: clickedCard,
+        selectedIndex: clickedIndex,
         cards
       })
     }
@@ -44,8 +47,7 @@ export default class App extends React.Component {
     if (!selectedCard) return false
 
     if (selectedCard.type === card.type) {
-      console.log('match!')
-      const cards = this.state.cards.map(element => {
+      const solvedCards = cards.map(element => {
         if (element.type === card.type) {
           element.solved = true
         }
@@ -53,12 +55,11 @@ export default class App extends React.Component {
       })
 
       this.setState({
-        cards
+        cards: solvedCards
       })
 
       this.resetTurn()
     } else {
-      console.log('dont match!')
       const cards = this.state.cards.map((element, index) => {
         if (index === selectedIndex || index === i) {
           element.revealed = false
@@ -85,17 +86,16 @@ export default class App extends React.Component {
     for (let index = 0; index < cardIndexs.length; index++) {
       cards[cardIndexs[index]].revealed = !cards[cardIndexs[index]].revealed
     }
-    console.log(cards)
 
     return cards
   }
 
   render () {
-    const { cards, selectedCard } = this.state
+    const { cards } = this.state
     return (
       <div id='gameContainer'>
         <div id='gameScreen'>
-          <Grid>
+          <Board>
             {cards.map((card, index) => (
               <Card
                 item={card}
@@ -103,7 +103,7 @@ export default class App extends React.Component {
                 onClick={this.handleSelectedCard}
               />
             ))}
-          </Grid>
+          </Board>
         </div>
       </div>
     )
