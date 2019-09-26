@@ -4,7 +4,6 @@ import { Card, Board } from './components'
 import generateBoard from './BoardGenerator'
 import './App.css'
 
-
 export default class App extends React.Component {
   state = {
     selectedCard: null,
